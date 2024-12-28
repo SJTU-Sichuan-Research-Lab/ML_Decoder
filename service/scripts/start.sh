@@ -1,0 +1,1 @@
+docker run --rm -it --gpus all -v "C:\Users\ycwei\PycharmProjects\nas\ML_Decoder:/app/tmp" -v "C:\Users\ycwei\PycharmProjects\nas\ML_Decoder\service\models:/app/models" -v "C:\Users\ycwei\PycharmProjects\nas\ML_Decoder\service\data:/app/data" --name mld_dev mld:v1 bash

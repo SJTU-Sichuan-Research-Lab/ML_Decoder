@@ -34,6 +34,8 @@ parser.add_argument('--num-of-groups', default=-1, type=int)  # full-decoding
 parser.add_argument('--decoder-embedding', default=768, type=int)
 parser.add_argument('--zsl', default=0, type=int)
 
+args = parser.parse_args()
+
 def main():
     print('Inference code on a single image')
 
