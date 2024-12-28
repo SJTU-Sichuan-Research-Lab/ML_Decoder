@@ -14,19 +14,20 @@ CORS(app)  # allow all domains
 app.register_blueprint(nas_api)
 
 # Modify the js file, replace the API_BASE with env parameter when starting app
-# api_base = os.environ.get('API_BASE', 'localhost:8889')
-# js_file_path = 'static/js/home.js'
-# with open(js_file_path, 'r') as file:
-#     content = file.read()
-#     content = content.replace('{{API_BASE}}', api_base)
-#     file.close()
-# with open(js_file_path, 'w') as file:
-#     file.write(content)
-#     file.close()
-#
-# @app.route('/')
-# def home():
-#     return render_template('index.html')
+api_base = os.environ.get('API_BASE', 'localhost:8889')
+js_file_path = 'static/js/home.js'
+with open(js_file_path, 'r') as file:
+    content = file.read()
+    content = content.replace('{{API_BASE}}', api_base)
+    file.close()
+with open(js_file_path, 'w') as file:
+    file.write(content)
+    file.close()
+
+
+@app.route('/')
+def home():
+    return render_template('index.html')
 
 
 if __name__ == '__main__':

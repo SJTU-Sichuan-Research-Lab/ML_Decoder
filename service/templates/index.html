@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiclass Labeling Service</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+<h1>Multiclass Labeling Service</h1>
+<p style="font-size: 20px">This is a demo of our Multiclass Labeling Service.</p>
+<p>You can select some image files and upload them to get the multiclass recognition results.</p>
+
+<!-- Image Input (select multiple images) -->
+<input type="file" id="imageInput" name="images" accept="image/*" multiple>
+
+<!-- Previews for selected images -->
+<div id="imagePreviews" class="image-previews"></div>
+<button id="uploadButton">Upload</button>
+
+<!-- Modal for larger image -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <!-- Previous and Next Buttons -->
+    <button id="prevBtn" class="prev">&lt;</button>
+    <img class="modal-content" id="modalImg">
+    <button id="nextBtn" class="next">&gt;</button>
+    <div id="caption"></div>
+    <div id="modalLabels"></div>
+</div>
+
+
+<p class="version">v20241222</p>
+
+<!-- Link to the JavaScript files -->
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>

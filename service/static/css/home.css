@@ -1,0 +1,174 @@
+/* Style for the file input and preview container */
+#imageInput {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.image-previews {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px; /* Reduced gap between images */
+    margin-top: 20px;
+}
+
+.preview {
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    text-align: center;
+    max-width: 150px; /* Limit the size of each preview block */
+}
+
+.preview img {
+    width: 100px; /* Set your preferred size for the preview */
+    height: auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file-name {
+    margin-top: 8px;
+    color: black; /* Filename color */
+    font-size: 12px; /* Smaller font size for the filename */
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 120px; /* Match the width of the image */
+}
+
+/* Style for the upload button */
+#uploadButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#uploadButton:hover {
+    background-color: #45a049;
+}
+
+/* Modal Styling */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Grey background with opacity */
+    padding-top: 60px;
+}
+
+/* Modal content (image) */
+.modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+/* Caption (filename) */
+#caption {
+    color: white; /* White text */
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Close button */
+.close {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #ddd;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Navigation buttons (Previous and Next) */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    color: white;
+    font-size: 30px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    cursor: pointer;
+    z-index: 1;
+    transform: translateY(-50%);
+    transition: background-color 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Position the previous button on the left */
+.prev {
+    left: 10px;
+}
+
+/* Position the next button on the right */
+.next {
+    right: 10px;
+}
+
+/* Add some gap between the image and filename in the modal */
+#caption {
+    margin-top: 10px;
+}
+
+.scene-label {
+    text-align: left;
+}
+
+.label-element {
+    font-size: 12px;
+}
+#modalLabels {
+    margin-top: 10px;
+}
+.modal-label-element {
+    color: white;
+}
+
+
+
+.loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.upload-loading {
+    background-color: #ccc;
+    pointer-events: none;  /* Disable button click */
+}

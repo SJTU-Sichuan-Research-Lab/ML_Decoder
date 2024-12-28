@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    padding-top: 50px;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: #007bff;
+}
+
+p {
+    color: #333;
+}
+
+.version {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    color: #dddddd;
+    font-size: 12px;
+}

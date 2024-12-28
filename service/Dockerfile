@@ -21,6 +21,7 @@ ENV LD_LIBRARY_PATH="${CUDA_HOME}/lib64:${LD_LIBRARY_PATH}"
 
 # Install any needed dependencies
 RUN pip install -r requirements.txt
+RUN pip install -r service/requirements.txt
 
 
 

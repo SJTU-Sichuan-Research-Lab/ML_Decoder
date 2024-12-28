@@ -15,6 +15,8 @@ from src_files.models.tresnet.tresnet import InplacABN_to_ABN
 from PIL import Image
 import numpy as np
 
+fpath_labels = './resources/labels_with_chinese.txt'
+
 model_args = Namespace(
     num_classes=80,  # Default: 80
     model_path='./models/tresnet_l_COCO__448_90_0.pth',  # Default model path
@@ -33,10 +35,18 @@ image_args = Namespace(
     image_size=448,  # Default image size (448)
 )
 
+labels = None
 model = None
 classes_list = None
 th = 0.75  # Default threshold (0.75)
 top_k = 20  # Default top-k value (20)
+
+
+def read_labels():
+    global labels
+    if labels is None:
+        with open(fpath_labels, 'r') as f:
+            labels = f.readlines()
 
 
 def init():
@@ -56,9 +66,15 @@ def init():
     print('done')
 
 
+init()
+read_labels()
+
+
 def serve(pic_path):
     if model is None:
         init()
+    if labels is None:
+        read_labels()
 
     t0 = time.time()
 
@@ -74,12 +90,18 @@ def serve(pic_path):
     # detected_classes = classes_list[np_output > args.th]
     idx_sort = np.argsort(-np_output)
     detected_classes = np.array(classes_list)[idx_sort][: top_k]
+    detected_labels = np.array(labels)[idx_sort][: top_k]
     scores = np_output[idx_sort][: top_k]
 
     t1 = time.time()
 
     cost_time = t1 - t0
 
-    return [{cls, score} for cls, score in zip(detected_classes, scores)], cost_time
+    return [
+        {'class_idx': int(cls_idx), 'label': str(label.strip()), 'confidence': float(score)}
+        for
+        cls_idx, label, score
+        in
+        zip(idx_sort, detected_labels, scores)], cost_time
     # idx_th = scores > th
     # detected_classes = detected_classes[idx_th]
