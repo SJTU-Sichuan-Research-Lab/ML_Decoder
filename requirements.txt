@@ -1,5 +1,6 @@
 torch>=1.7
+numpy==1.25.2
 torchvision>=0.5.0
-inplace-abn
+inplace-abn==1.1.0
 pycocotools
 randaugment

@@ -77,16 +77,19 @@ def main():
     detected_classes = detected_classes[idx_th]
     print('done\n')
 
-    # displaying image
-    print('showing image on screen...')
-    fig = plt.figure()
-    plt.imshow(im)
-    plt.axis('off')
-    plt.axis('tight')
-    # plt.rcParams["axes.titlesize"] = 10
-    plt.title("detected classes: {}".format(detected_classes))
+    # # displaying image
+    # print('showing image on screen...')
+    # fig = plt.figure()
+    # plt.imshow(im)
+    # plt.axis('off')
+    # plt.axis('tight')
+    # # plt.rcParams["axes.titlesize"] = 10
+    # plt.title("detected classes: {}".format(detected_classes))
+    #
+    # plt.show()
 
-    plt.show()
+
+    print("detected classes: {}".format(detected_classes))
     print('done\n')
 
 
