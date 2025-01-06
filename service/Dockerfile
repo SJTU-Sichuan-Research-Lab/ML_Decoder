@@ -26,4 +26,4 @@ RUN pip install -r service/requirements.txt
 
 
 # Run the Python script
-#CMD ["python", "./your_script.py"]
+CMD ["/bin/bash", "./service/scripts/on-docker-start.sh"]
