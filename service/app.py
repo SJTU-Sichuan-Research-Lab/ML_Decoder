@@ -25,7 +25,7 @@ with open(js_file_path, 'w') as file:
     file.close()
 
 
-@app.route('/')
+@app.route('/nas/multiclass-labeling/demo')
 def home():
     return render_template('index.html')
 

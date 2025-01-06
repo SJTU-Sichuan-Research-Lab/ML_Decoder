@@ -8,6 +8,7 @@ from werkzeug.utils import secure_filename
 from api.util import *
 
 from algorithm.labeling import serve
+from algorithm.labeling2 import serve as serve2
 
 # Create a Blueprint for the nas API
 nas_api = Blueprint('nas_api', __name__)
@@ -27,7 +28,7 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 
-@nas_api.route('/nas/api/multiclass_labeling', methods=['POST'])
+@nas_api.route('/nas/api/v1/multiclass-labeling', methods=['POST'])
 def multiclass_labeling():
     if 'image' not in request.files:
         return jsonify({'error': 'No file part'}), 400
@@ -42,15 +43,19 @@ def multiclass_labeling():
         img_file_pth = os.path.join(UPLOAD_FOLDER, filename)
         file.save(img_file_pth)
 
-        try:
-            top_k_recognition_result, cost_time = serve(img_file_pth)
-        except Exception as e:
-            return jsonify({'error': "Algorithm fail", 'msg': str(e)}), 500
+        top_k_recognition_result, cost_time = serve(img_file_pth)
+        top_k_recognition_result2, cost_time2 = serve2(img_file_pth)
+        # try:
+        # except Exception as e:
+        #     print(e)
+        #     return jsonify({'error': "Algorithm fail", 'msg': str(e)}), 500
 
         return jsonify({
             'uploaded_file': filename,
             'top_k_results': top_k_recognition_result,
-            'cost_time': cost_time
+            'cost_time': cost_time,
+            'top_k_results2': top_k_recognition_result2,
+            'cost_time2': cost_time2,
         }), 200
 
     return jsonify({'error': 'Invalid file type'}), 400
